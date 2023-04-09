@@ -85,6 +85,18 @@ program
 
     // Отсортировала массив массивов в алфавитном порядке и чтобы первый файл шел первым если  ключи равны
     const sortedArr3 = sortedArr2.sort((a, b) => ((a[0].slice(2) === b[0].slice(2) ? 0 : a[0].slice(2) > b[0].slice(2)) ? 1 : -1));
+
+    const funcArr = sortedArr2.sort((a, b) => {
+      if (a[0].slice(2) === b[0].slice(2)) {
+        return a > b;
+      }
+
+      if (a[0].slice(2) > b[0].slice(2)) {
+        return a > b;
+      }
+      return a < b;
+    });
+    console.log(`newarr ${funcArr}`);
     console.log(sortedArr3);
     // sorted right string is here!!!
     console.log(JSON.stringify(Object.fromEntries(sortedArr3), null, ' '));
