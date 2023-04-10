@@ -4,3 +4,6 @@ install:
 
 brain:
 	node bin/brain.js
+
+hello:
+	node bin/hello.js	
