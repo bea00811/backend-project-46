@@ -17,8 +17,6 @@ program
   .action((filepath1, filepath2) => {
     const data1 = fs.readFileSync(filepath1, { encoding: 'utf8' });
     const data2 = fs.readFileSync(filepath2, { encoding: 'utf8' });
-    console.log(data1);
-    console.log(typeof data2);
     compareFiles(data1, data2);
   })
   .parse(process.argv);

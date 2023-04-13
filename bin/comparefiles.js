@@ -35,30 +35,18 @@ const compareFiles = (file1, file2) => {
 
   const obj = {};
 
-  equalFile1File2.reduce((result, current) => {
-    result[`  ${current[0]}`] = `${current[1]}`;
-    return result;
-  }, obj);
+  const makeObject = (littleObj) => {
+    littleObj.reduce((result, current) => {
+      result[`  ${current[0]}`] = `${current[1]}`;
+      return result;
+    }, obj);
+  };
 
-  diffFile1.reduce((result, current) => {
-    result[`- ${current[0]}`] = `${current[1]}`;
-    return result;
-  }, obj);
-
-  diffFile2.reduce((result, current) => {
-    result[`+ ${current[0]}`] = `${current[1]}`;
-    return result;
-  }, obj);
-
-  difValue1.reduce((result, current) => {
-    result[`- ${current[0]}`] = `${current[1]}`;
-    return result;
-  }, obj);
-
-  difValue2.reduce((result, current) => {
-    result[`+ ${current[0]}`] = `${current[1]}`;
-    return result;
-  }, obj);
+  makeObject(equalFile1File2);
+  makeObject(diffFile1);
+  makeObject(diffFile2);
+  makeObject(difValue1);
+  makeObject(difValue2);
 
   // Это один большой объект, уже отфильтрованный
 

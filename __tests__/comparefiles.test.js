@@ -1,20 +1,17 @@
+import { test, expect } from '@jest/globals';
+import * as fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import * as path from 'path';
+
 import comparefiles from '../bin/comparefiles.js';
 
-const file1 = {
-  host: 'hexlet.io',
-  timeout: 50,
-  proxy: '123.234.53.22',
-  follow: false,
-};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const file2 = {
-  timeout: 20,
-  verbose: true,
-  host: 'hexlet.io',
-};
-
-const myJSON1 = JSON.stringify(file1);
-const myJSON2 = JSON.stringify(file2);
+const data1 = fs.readFileSync(getFixturePath('file1.json'), 'utf8');
+const data2 = fs.readFileSync(getFixturePath('file2.json'), 'utf8');
 
 const rightAnswer = {
   '- follow': 'false',
@@ -26,5 +23,5 @@ const rightAnswer = {
 };
 
 test('comparefiles', () => {
-  expect(comparefiles(myJSON1, myJSON2)).toBe(rightAnswer);
+  expect(comparefiles(data1, data2)).toBe(rightAnswer);
 });
