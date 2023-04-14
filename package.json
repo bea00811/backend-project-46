@@ -3,22 +3,18 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/bea00811/backend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/bea00811/backend-project-46/actions)",
-  "main": "gendiff.js",
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "jest"
   },
   "bin": {
-    "gendiff": "bin/gendiff.js",
-    "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js",
-    "brain-gcd": "bin/brain-gcd.js",
-    "brain-progression": "bin/brain-progression.js",
-    "brain-prime": "bin/brain-prime.js"
+    "gendiff": "bin/gendiff.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "commander": "^10.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

@@ -1,12 +1,8 @@
 #!/usr/bin/env node
-import * as fs from 'fs';
+
 import { program } from 'commander';
 import compareFiles from './comparefiles.js';
-// const command = (names) => {
-//   for (const name of names) {
-//     console.log(`Hello, ${name}!`);
-//   }
-// };
+import parser from './parser.js';
 
 program
   .description('Compares two configuration files and shows a difference.')
@@ -15,8 +11,10 @@ program
   .argument('filepath1')
   .argument('filepath2')
   .action((filepath1, filepath2) => {
-    const data1 = fs.readFileSync(filepath1, { encoding: 'utf8' });
-    const data2 = fs.readFileSync(filepath2, { encoding: 'utf8' });
-    compareFiles(data1, data2);
+    // console.log(filepath1.split('.')[1]);
+    // console.log(filepath2.split('.')[1]);
+    // console.log(getFileFormat(data1));
+    // console.log(getFileFormat(data2));
+    compareFiles(filepath1, filepath2);
   })
   .parse(process.argv);

@@ -1,13 +1,23 @@
 import _ from 'lodash';
+import * as fs from 'fs';
+import parser from './parser.js';
 
-const compareFiles = (file1, file2) => {
-  // Display the file data
-  const data1Parsed = JSON.parse(file1);
-  const data2Parsed = JSON.parse(file2);
+const compareFiles = (filepath1, filepath2) => {
+  const data1 = fs.readFileSync(filepath1, { encoding: 'utf8' });
+  const data2 = fs.readFileSync(filepath2, { encoding: 'utf8' });
 
+  const format1 = filepath1.split('.')[1];
+  const format2 = filepath2.split('.')[1];
+
+  let dataContent1;
+  let dataContent2;
+  if (format1 === format2) {
+    dataContent1 = parser(format1, data1);
+    dataContent2 = parser(format2, data2);
+  }
   // Преобразовываю в массив массивов
-  const arr1 = Object.entries(data1Parsed);
-  const arr2 = Object.entries(data2Parsed);
+  const arr1 = Object.entries(dataContent1);
+  const arr2 = Object.entries(dataContent2);
   // Solved whith hier functions
 
   // ключ есть в обоих файлах, и его значения совпадают.
@@ -35,18 +45,30 @@ const compareFiles = (file1, file2) => {
 
   const obj = {};
 
-  const makeObject = (littleObj) => {
-    littleObj.reduce((result, current) => {
-      result[`  ${current[0]}`] = `${current[1]}`;
-      return result;
-    }, obj);
-  };
+  equalFile1File2.reduce((result, current) => {
+    result[`  ${current[0]}`] = `${current[1]}`;
+    return result;
+  }, obj);
 
-  makeObject(equalFile1File2);
-  makeObject(diffFile1);
-  makeObject(diffFile2);
-  makeObject(difValue1);
-  makeObject(difValue2);
+  diffFile1.reduce((result, current) => {
+    result[`- ${current[0]}`] = `${current[1]}`;
+    return result;
+  }, obj);
+
+  diffFile2.reduce((result, current) => {
+    result[`+ ${current[0]}`] = `${current[1]}`;
+    return result;
+  }, obj);
+
+  difValue1.reduce((result, current) => {
+    result[`- ${current[0]}`] = `${current[1]}`;
+    return result;
+  }, obj);
+
+  difValue2.reduce((result, current) => {
+    result[`+ ${current[0]}`] = `${current[1]}`;
+    return result;
+  }, obj);
 
   // Это один большой объект, уже отфильтрованный
 

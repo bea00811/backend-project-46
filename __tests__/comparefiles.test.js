@@ -10,18 +10,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const data1 = fs.readFileSync(getFixturePath('file1.json'), 'utf8');
-const data2 = fs.readFileSync(getFixturePath('file2.json'), 'utf8');
+const data1 = getFixturePath('file1.json');
+const data2 = getFixturePath('file2.json');
 
-const rightAnswer = {
-  '- follow': 'false',
-  '  host': 'hexlet.io',
-  '- proxy': '123.234.53.22',
-  '- timeout': '50',
-  '+ timeout': '20',
-  '+ verbose': 'true',
-};
+const data3 = getFixturePath('file1.yml');
+const data4 = getFixturePath('file2.yml');
 
-test('comparefiles', () => {
+const rightAnswer = fs.readFileSync(getFixturePath('right.txt'), 'utf8');
+
+test('testComparefiles', () => {
   expect(comparefiles(data1, data2)).toBe(rightAnswer);
+  expect(comparefiles(data3, data4)).toBe(rightAnswer);
 });
