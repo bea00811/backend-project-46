@@ -46,28 +46,33 @@ const compareFiles = (filepath1, filepath2) => {
   const obj = {};
 
   equalFile1File2.reduce((result, current) => {
-    result[`  ${current[0]}`] = `${current[1]}`;
-    return result;
+    const newResult = result;
+    newResult[`  ${current[0]}`] = `${current[1]}`;
+    return newResult;
   }, obj);
 
   diffFile1.reduce((result, current) => {
-    result[`- ${current[0]}`] = `${current[1]}`;
-    return result;
+    const newResult = result;
+    newResult[`- ${current[0]}`] = `${current[1]}`;
+    return newResult;
   }, obj);
 
   diffFile2.reduce((result, current) => {
-    result[`+ ${current[0]}`] = `${current[1]}`;
-    return result;
+    const newResult = result;
+    newResult[`+ ${current[0]}`] = `${current[1]}`;
+    return newResult;
   }, obj);
 
   difValue1.reduce((result, current) => {
-    result[`- ${current[0]}`] = `${current[1]}`;
-    return result;
+    const newResult = result;
+    newResult[`- ${current[0]}`] = `${current[1]}`;
+    return newResult;
   }, obj);
 
   difValue2.reduce((result, current) => {
-    result[`+ ${current[0]}`] = `${current[1]}`;
-    return result;
+    const newResult = result;
+    newResult[`+ ${current[0]}`] = `${current[1]}`;
+    return newResult;
   }, obj);
 
   // Это один большой объект, уже отфильтрованный
