@@ -15,7 +15,7 @@ const data2 = getFixturePath('file2.json');
 
 const data3 = getFixturePath('file1.yml');
 const data4 = getFixturePath('file2.yml');
-/** **some comment */
+/** **some comment1 */
 
 const rightAnswer = fs.readFileSync(getFixturePath('right.txt'), 'utf8');
 
