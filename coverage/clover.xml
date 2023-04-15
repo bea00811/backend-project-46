@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681593808968" clover="3.2.0">
-  <project timestamp="1681593808968" name="All files">
+<coverage generated="1681594024214" clover="3.2.0">
+  <project timestamp="1681594024214" name="All files">
     <metrics statements="62" coveredstatements="60" conditionals="18" coveredconditionals="15" methods="21" coveredmethods="21" elements="101" coveredelements="96" complexity="0" loc="62" ncloc="62" packages="1" files="4" classes="4"/>
     <file name="comparefiles.js" path="/home/irina/Documents/2 project/backend-project-46/bin/comparefiles.js">
       <metrics statements="54" coveredstatements="54" conditionals="14" coveredconditionals="13" methods="18" coveredmethods="18"/>

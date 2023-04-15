@@ -6,4 +6,3 @@ test:
 
 covertest:
 	npx jest --coverage
-
