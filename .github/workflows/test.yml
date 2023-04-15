@@ -31,7 +31,7 @@ jobs:
       - name: 'test'
         uses: paambaati/codeclimate-action@v2.7.4
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: 8877bb999ab310d46802bb462392235b8e1a76ab01b6bffccf68c54b93a00b2e
         with:
           coverageCommand: npm test -- --coverage --coverageProvider=v8
           debug: true
