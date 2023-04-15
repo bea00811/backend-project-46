@@ -2,7 +2,6 @@
 
 import { program } from 'commander';
 import compareFiles from './comparefiles.js';
-import parser from './parser.js';
 
 program
   .description('Compares two configuration files and shows a difference.')
