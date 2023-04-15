@@ -5,5 +5,5 @@ test:
 	npm test
 
 covertest:
-	npm test -- --coverage --coverageProvider=v8
+	npx jest --coverage
 
