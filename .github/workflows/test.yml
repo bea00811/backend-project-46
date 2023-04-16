@@ -1,40 +1,48 @@
-# file: .github/workflows/test.yml
-name: test
+# Name of workflow
+name: Node CI
 
-# Run this workflow every time a new commit pushed to your repository
-on: push
+# Trigger the workflow on push or pull request
+on:
+  - push
+  - pull_request
+
+env:
+  CI: true
 
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
-  ESLint:
-    # Name the Job
-    name: Lint code base
-    # Set the type of machine to run on
+  build:
+
+    # The type of machine to run the job on
     runs-on: ubuntu-latest
 
+    strategy:
+      # Node versions list
+      matrix:
+        node-version: [18.x]
+
     steps:
-      steps:
         # Check-out repository under GitHub workspace
         # https://github.com/actions/checkout
-        - uses: actions/checkout@v3
-          # Step's name
-        - name: Use Node.js ${{ matrix.node-version }}
-          # Configures the node version used on GitHub-hosted runners
-          # https://github.com/actions/setup-node
-          uses: actions/setup-node@v3
-          # The Node.js version to configure
-          with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'npm'
-        - run: make install
-        - run: make lint
-        - run: make test
-
-        - name: 'test'
-          uses: paambaati/codeclimate-action@v2.7.4
-          env:
-            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          with:
-            coverageCommand: npm test -- --coverage --coverageProvider=v8
-            debug: true
+      - uses: actions/checkout@v3
+        # Step's name
+      - name: Use Node.js ${{ matrix.node-version }}
+        # Configures the node version used on GitHub-hosted runners
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v3
+        # The Node.js version to configure
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: make install
+      - run: make lint
+      - run: make test
+       - name: Test & publish code coverage
+         # Publish code coverage on Code Climate
+        # https://github.com/paambaati/codeclimate-action
+       uses: paambaati/codeclimate-action@v3.0.0
+        # Add Code Climate secret key
+         env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
