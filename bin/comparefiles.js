@@ -98,7 +98,6 @@ const compareFiles = (filepath1, filepath2) => {
   // sorted right string is here!!!
 
   const compareFilesString = JSON.stringify(Object.fromEntries(sortedArr32), null, ' ');
-  console.log(compareFilesString);
   return compareFilesString;
 };
 
