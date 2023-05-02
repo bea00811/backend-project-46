@@ -1,50 +1,61 @@
 #!/usr/bin/env node
 import _ from 'lodash';
-import * as fs from 'fs';
-import parser from './parser.js';
 
-console.log('Hello.I am here to show that file executes:)');
+const makeNodes = (key, oldvalue, newValue, type, children) => ({
+  key,
+  oldvalue,
+  newValue,
+  type,
+  children,
+});
 
 const compareFilesDeep = (data1, data2) => {
-  const makeNodes = (key, value, type, children) => ({
-    key,
-    value,
-    type,
-    children,
-  });
-
-  const arrayOfKeysBothFiles = _.union(Object.keys(data1), Object.keys(data2));
-  const result = [];
-  arrayOfKeysBothFiles.map((item) => {
+  const arrayOfKeysBothFiles = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+  // const result = [];
+  const result = arrayOfKeysBothFiles.map((item) => {
     if (_.isPlainObject(_.get(data1, item)) && _.isPlainObject(_.get(data2, item))) {
       const valueData1 = _.get(data1, item);
       const valueData2 = _.get(data2, item);
-      result.push(makeNodes(item, 'value', 'nested', compareFilesDeep(valueData1, valueData2)));
+      return makeNodes(item, null, null, 'nested', compareFilesDeep(valueData1, valueData2));
+      // let element1 = makeNodes(item,'value','nested', compareFilesDeep(valueData1,valueData2))
+      //  result = {...result, element1 }
     }
 
     if (_.get(data1, item) === _.get(data2, item)) {
-      result.push(makeNodes(item, data1[item], 'unchanged2', []));
+      return makeNodes(item, data1[item], data2[item], 'unchanged', []);
+      // let element2 = makeNodes(item, data1[item],'unchanged', [])
+      // result = {...result, element2 }
     }
 
-    if (
-      typeof _.get(data1, item) !== 'object'
-      && typeof _.get(data2, item) !== 'object'
-      && _.has(data1, item)
-      && _.has(data2, item)
-      && _.get(data1, item) !== _.get(data2, item)
-    ) {
-      result.push(makeNodes(item, data1[item], 'changed', []));
+    if (_.has(data1, item) && _.has(data2, item) && _.get(data1, item) !== _.get(data2, item)) {
+      return makeNodes(item, data1[item], data2[item], 'changed', []);
+      // let element3 = makeNodes(item,data1[item],'changed', [])
+      // result = {...result, element3 }
     }
-    if (!_.has(data1, item)) {
-      result.push(makeNodes(item, data2[item], 'added', []));
-    }
+
+    // let element4 = makeNodes(item, data2[item],'added', [])
+    // result = {...result, element4 }
+
     if (!_.has(data2, item)) {
-      result.push(makeNodes(item, data1[item], 'removed', []));
+      return makeNodes(item, data1[item], data2[item], 'removed', []);
+      // let element5 = makeNodes(item,data1[item],'removed', [])
+      // result = {...result, element5 }
     }
+
+    return makeNodes(item, data2[item], data1[item], 'added', []);
   });
 
-  console.log(result);
   return result;
 };
 
-export default compareFilesDeep;
+const getRightTree = (path1, path2) => {
+  const rightTree = {
+    key: '',
+    type: 'root',
+  };
+  rightTree.children = compareFilesDeep(path1, path2);
+
+  return rightTree;
+};
+
+export default getRightTree;
