@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import stylish from './stylish.js';
+import plain from './plain.js';
+import json from './json.js';
 import getRightTree from './comparefilesdeep.js';
 import getparsedData from './getparsedData.js';
 
@@ -11,7 +13,10 @@ const wrapperforcommander = (filepath1, filepath2, formatoption) => {
     return stylish(getRightTree(data1, data2));
   }
   if (formatoption === 'plain') {
-    return 'its plain';
+    return plain(getRightTree(data1, data2));
+  }
+  if (formatoption === 'json') {
+    return json(getRightTree(data1, data2));
   }
   return 'its nothng';
 };
