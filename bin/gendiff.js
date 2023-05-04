@@ -2,7 +2,6 @@
 
 import { program } from 'commander';
 
-
 import wrapperforcommander from './wrapperforcommander.js';
 
 program
@@ -23,11 +22,8 @@ program
     // console.log(getFileFormat(data1));
     // console.log(getFileFormat(data2));
     // compareFiles(filepath1, filepath2);
-  
-
     // const options = program.opts();
     // const { stylish, plain } = options;
-
     console.log(wrapperforcommander(filepath1, filepath2, program.opts().format));
     // console.log(program.opts());
     // console.log(formatter(getRightTree(data1, data2, program.opts().format)));
