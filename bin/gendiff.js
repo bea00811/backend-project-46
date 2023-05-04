@@ -2,7 +2,7 @@
 
 import { program } from 'commander';
 
-import getparsedData from './getparsedData.js';
+
 import wrapperforcommander from './wrapperforcommander.js';
 
 program
@@ -23,13 +23,12 @@ program
     // console.log(getFileFormat(data1));
     // console.log(getFileFormat(data2));
     // compareFiles(filepath1, filepath2);
-    const data1 = getparsedData(filepath1);
-    const data2 = getparsedData(filepath2);
+  
 
     // const options = program.opts();
     // const { stylish, plain } = options;
 
-    console.log(wrapperforcommander(data1, data2, program.opts().format));
+    console.log(wrapperforcommander(filepath1, filepath2, program.opts().format));
     // console.log(program.opts());
     // console.log(formatter(getRightTree(data1, data2, program.opts().format)));
     // console.log(`cheese: ${program.opts().format}`);

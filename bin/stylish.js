@@ -69,9 +69,9 @@ const formatter = (tree) => {
       )}- ${key}: ${oldValueString}`;
     }
 
-    return `${replacer}${' '.repeat(
-      spaceForOneLevel * (depth - 1) + spaceToLeft,
-    )}- ${key}: ${oldValueString}`;
+    return `${replacer}${' '.repeat(spaceForOneLevel * (depth - 1) + spaceToLeft)}${' '} ${key}: ${oldValueString}`;
+
+    // return replacer + (' '.repeat(spaceForOneLevel * (depth - 1) + spaceToLeft)) + `${key}: ${oldValueString}`;
   };
 
   return iter(tree);
