@@ -41,7 +41,8 @@ const formatter = (tree) => {
 
     if (type === 'root') {
       return `{\n${replacer}${children
-        .map((item) => iter(item, makeLine(item, depth + 1), depth + 1)).join('\n')}\n${' '.repeat(spaceForOneLevel * depth * spaceForOneLevel)}}`;
+        .map((item) => iter(item, makeLine(item, depth + 1), depth + 1))
+        .join('\n')}\n${' '.repeat(spaceForOneLevel * depth * spaceForOneLevel)}}`;
     }
     if (type === 'nested') {
       return `${replacer}${children
@@ -69,9 +70,9 @@ const formatter = (tree) => {
       )}- ${key}: ${oldValueString}`;
     }
 
-    return `${replacer}${' '.repeat(spaceForOneLevel * (depth - 1) + spaceToLeft)}${' '} ${key}: ${oldValueString}`;
-
-    // return replacer + (' '.repeat(spaceForOneLevel * (depth - 1) + spaceToLeft)) + `${key}: ${oldValueString}`;
+    return `${replacer}${' '.repeat(
+      spaceForOneLevel * (depth - 1) + spaceToLeft,
+    )}${' '} ${key}: ${oldValueString}`;
   };
 
   return iter(tree);
