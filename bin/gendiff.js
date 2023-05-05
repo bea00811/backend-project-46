@@ -9,8 +9,8 @@ program
   .version('0.0.1')
   .option('-f, --format <type>', 'choose the format of diffs', 'stylish')
 
-  .argument('filepath1')
-  .argument('filepath2')
+  .arguments('<filepath1>')
+  .arguments('<filepath2>')
   .action((filepath1, filepath2) => {
     console.log(wrapperforcommander(filepath1, filepath2, program.opts().format));
 
