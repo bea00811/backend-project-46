@@ -52,8 +52,8 @@ const getRightTree = (path1, path2) => {
   const rightTree = {
     key: '',
     type: 'root',
+    children: compareFilesDeep(path1, path2),
   };
-  rightTree.children = compareFilesDeep(path1, path2);
 
   return rightTree;
 };

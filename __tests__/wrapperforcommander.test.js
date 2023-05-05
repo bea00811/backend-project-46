@@ -15,15 +15,15 @@ const data2 = getFixturePath('file2.yml');
 
 /** **some comment1 */
 
-const rightAnswer1 = fs.readFileSync(getFixturePath('rightStylish.txt'), 'utf8');
+// const rightAnswer1 = fs.readFileSync(getFixturePath('rightStylish.txt'), 'utf8');
 const rightAnswer2 = fs.readFileSync(getFixturePath('result_plain.txt'), 'utf8');
-const rightAnswer3 = fs.readFileSync(getFixturePath('rightJson.txt'), 'utf8');
+// const rightAnswer3 = fs.readFileSync(getFixturePath('rightJson.txt'), 'utf8');
 
 // test('test forWrapper1', () => {
 //   expect(wrapperforcommander(data1, data2, 'stylish')).toBe(rightAnswer1);
 // });
 
-test('test forWrapper2', () => {
+test('testPlain', () => {
   expect(wrapperforcommander(data1, data2, 'plain')).toBe(rightAnswer2);
 });
 
