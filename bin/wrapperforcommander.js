@@ -9,16 +9,13 @@ const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   const data1 = getparsedData(filepath1);
   const data2 = getparsedData(filepath2);
 
-  if (formatoption === 'stylish') {
-    return stylish(getRightTree(data1, data2));
-  }
   if (formatoption === 'plain') {
     return plain(getRightTree(data1, data2));
   }
   if (formatoption === 'json') {
     return json(getRightTree(data1, data2));
   }
-  return 'its nothng';
+  return stylish(getRightTree(data1, data2));
 };
 
 export default wrapperforcommander;
