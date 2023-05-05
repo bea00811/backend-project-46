@@ -20,12 +20,15 @@ jobs:
           node-version: '18.x'
       # Runs the Linter action
       - name: 'install'
-        run: npm i
+        run: make install
 
       - name: 'lint'
         run: make lint
 
       - name: 'test'
+        run: make test
+
+      - name: 'test coverage'
         uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

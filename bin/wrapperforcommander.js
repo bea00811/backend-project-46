@@ -20,5 +20,5 @@ const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   }
   return 'its nothng';
 };
-// console.log(stylish (getRightTree(data1, data2, options.type)));
+
 export default wrapperforcommander;
