@@ -27,6 +27,6 @@ test('testPlain', () => {
   expect(wrapperforcommander(data1, data2, 'plain')).toBe(rightAnswer2);
 });
 
-test('test forWrapper3', () => {
+test('testJson', () => {
   expect(wrapperforcommander(data1, data2, 'json')).toBe(rightAnswer3);
 });
