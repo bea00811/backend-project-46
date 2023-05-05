@@ -43,7 +43,7 @@ const plain = (tree) => {
     return [];
   };
 
-  return iter(tree);
+  return iter(tree).trim();
 };
 
 export default plain;
