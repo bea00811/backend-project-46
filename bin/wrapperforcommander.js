@@ -3,7 +3,7 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 import getRightTree from './comparefilesdeep.js';
-import getparsedData from './getparsedData.js';
+import getparsedData from '../getparsedData.js';
 
 const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   const data1 = getparsedData(filepath1);
