@@ -1,21 +1,10 @@
-#!/usr/bin/env node
-import stylish from './stylish.js';
-import plain from './plain.js';
-import json from './json.js';
-import getRightTree from './comparefilesdeep.js';
-import getparsedData from './getparsedData.js';
+import getparsedData from '../src/parsers/getparsedData.js';
+import formatter from '../src/formatters/index.js';
 
 const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   const data1 = getparsedData(filepath1);
   const data2 = getparsedData(filepath2);
-
-  if (formatoption === 'plain') {
-    return plain(getRightTree(data1, data2));
-  }
-  if (formatoption === 'json') {
-    return json(getRightTree(data1, data2));
-  }
-  return stylish(getRightTree(data1, data2));
+  return formatter(data1, data2, formatoption);
 };
 
 export default wrapperforcommander;
