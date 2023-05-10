@@ -5,7 +5,6 @@ import json from './json.js';
 import getRightTree from './comparefilesdeep.js';
 import getparsedData from '../parsers/getparsedData.js';
 
-
 const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   const data1 = getparsedData(filepath1);
   const data2 = getparsedData(filepath2);
