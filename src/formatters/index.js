@@ -15,7 +15,7 @@ const formatter = (data1, data2, formatoption) => {
     return stylish(getRightTree(data1, data2));
   }
 
-  if (formatoption === 'undefined') {
+  if (formatoption === undefined) {
     return stylish(getRightTree(data1, data2));
   }
   return new Error(`Dear user, your format ${formatoption} is wrong. Please type correctly.`);
