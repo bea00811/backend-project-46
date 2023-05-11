@@ -13,8 +13,5 @@ program
   .argument('filepath2')
   .action((filepath1, filepath2) => {
     console.log(wrapperforcommander(filepath1, filepath2, program.opts().format));
-
-    // console.log(formatter(getRightTree(data1, data2, program.opts().format)));
-    // console.log(`cheese: ${program.opts().format}`);
   })
   .parse(process.argv);
