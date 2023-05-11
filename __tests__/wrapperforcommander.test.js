@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+import { test, expect, describe} from '@jest/globals';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -19,14 +19,29 @@ const rightAnswer1 = fs.readFileSync(getFixturePath('rightStylish.txt'), 'utf8')
 const rightAnswer2 = fs.readFileSync(getFixturePath('rightPlain.txt'), 'utf8');
 const rightAnswer3 = fs.readFileSync(getFixturePath('rightJson.txt'), 'utf8');
 
-test('testStylish', () => {
-  expect(wrapperforcommander(data1, data2, 'stylish')).toBe(rightAnswer1);
-});
-
-test('testPlain', () => {
-  expect(wrapperforcommander(data1, data2, 'plain')).toBe(rightAnswer2);
-});
-
-test('testJson', () => {
-  expect(wrapperforcommander(data1, data2, 'json')).toBe(rightAnswer3);
+describe.each([
+  {
+    a: data1,
+    b: data2,
+    expected: rightAnswer1,
+    format: 'stylish',
+  },
+  {
+    a: data1,
+    b: data2,
+    expected: rightAnswer2,
+    format: 'plain',
+  },
+  {
+    a: data1,
+    b: data2,
+    expected: rightAnswer3,
+    format: 'json',
+  },
+])('.add($a, $b)', ({
+  a, b, expected, format,
+}) => {
+  test('mytest', () => {
+    expect(wrapperforcommander(a, b, format)).toBe(expected);
+  });
 });
