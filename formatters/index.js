@@ -14,7 +14,7 @@ const formatter = (data1, data2, formatoption) => {
   if (formatoption === 'stylish') {
     return stylish(getRightTree(data1, data2));
   }
-  return new Error('wrong format');
+  return stylish(getRightTree(data1, data2));
 };
 
 export default formatter;
