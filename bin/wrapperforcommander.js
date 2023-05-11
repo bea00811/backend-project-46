@@ -1,5 +1,5 @@
-import getparsedData from './parsers/getparsedData.js';
-import formatter from './formatters/index.js';
+import getparsedData from '../src/parsers/getparsedData.js';
+import formatter from '../src/formatters/index.js';
 
 const wrapperforcommander = (filepath1, filepath2, formatoption) => {
   const data1 = getparsedData(filepath1);
