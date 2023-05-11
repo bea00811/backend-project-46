@@ -18,4 +18,3 @@
 
 <a href="https://asciinema.org/a/ekHm2Z0fAhjiHYzgghW4mr4EX" target="_blank"><img src="https://asciinema.org/a/ekHm2Z0fAhjiHYzgghW4mr4EX.svg" /></a>
 
-<!-- some code -->
