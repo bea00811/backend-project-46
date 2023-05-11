@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import * as path from 'path';
 
-import wrapperforcommander from '../src/wrapperforcommander.js';
+import compareFiles from '../src/compareFiles.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -42,6 +42,6 @@ describe.each([
   a, b, expected, format,
 }) => {
   test('mytest', () => {
-    expect(wrapperforcommander(a, b, format)).toBe(expected);
+    expect(compareFiles(a, b, format)).toBe(expected);
   });
 });

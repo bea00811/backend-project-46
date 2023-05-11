@@ -2,7 +2,7 @@
 
 import { program } from 'commander';
 
-import wrapperforcommander from '../src/wrapperforcommander.js';
+import compareFiles from '../src/compareFiles.js';
 
 program
   .description('Compares two configuration files and shows a difference.')
@@ -11,6 +11,6 @@ program
   .argument('filepath1')
   .argument('filepath2')
   .action((filepath1, filepath2) => {
-    console.log(wrapperforcommander(filepath1, filepath2, program.opts().format));
+    console.log(compareFiles(filepath1, filepath2, program.opts().format));
   })
   .parse(process.argv);
