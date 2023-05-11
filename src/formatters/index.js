@@ -1,7 +1,7 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
-import getRightTree from '../bin/comparefilesdeep.js';
+import getRightTree from '../comparefilesdeep.js';
 
 const formatter = (data1, data2, formatoption) => {
   if (formatoption === 'plain') {
