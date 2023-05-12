@@ -11,9 +11,9 @@ const getFileData = (filepath) => {
 
 const getparsedData = (filepath) => {
   const format1 = getFileFormat(filepath);
-  const filedata = getFileData (filepath)
-
-  const data1 = parser(format1, filedata);
-  return data1;
+  const filedata = getFileData(filepath);
+  const parsedData = parser(format1, filedata);
+  return parsedData;
 };
+
 export default getparsedData;
