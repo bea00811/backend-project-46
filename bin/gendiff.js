@@ -2,7 +2,7 @@
 
 import { program } from 'commander';
 
-import compareFiles from '../src/wrapperforcommander.js';
+import compareFiles from './wrapperforcommander.js';
 
 program
   .description('Compares two configuration files and shows a difference.')
