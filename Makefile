@@ -6,5 +6,8 @@ lint:
 test:
 	npm test
 
+gendiff:
+	bin/gendiff.js -h
+
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
