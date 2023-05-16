@@ -1,21 +1,20 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
-import getRightTree from '../comparefilesdeep.js';
 
-const formatter = (data1, data2, formatoption) => {
-  if (formatoption === 'plain') {
-    return plain(getRightTree(data1, data2));
+const formatter = (tree, formatOption) => {
+  if (formatOption === 'plain') {
+    return plain(tree);
   }
-  if (formatoption === 'json') {
-    return json(getRightTree(data1, data2));
-  }
-
-  if (formatoption === 'stylish') {
-    return stylish(getRightTree(data1, data2));
+  if (formatOption === 'json') {
+    return json(tree);
   }
 
-  return new Error(`Dear user, your format ${formatoption} is wrong. Please type correctly.`);
+  if (formatOption === 'stylish') {
+    return stylish(tree);
+  }
+
+  return new Error(`Dear user, your format ${formatOption} is wrong. Please type correctly.`);
 };
 
 export default formatter;

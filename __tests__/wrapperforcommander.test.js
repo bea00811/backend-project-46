@@ -12,36 +12,61 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const data1 = getFixturePath('file3.yml');
 const data2 = getFixturePath('file4.yml');
-
+const data3 = getFixturePath('file1.json');
+const data4 = getFixturePath('file2.json');
 /** **some comment1 */
-
-const rightAnswer1 = fs.readFileSync(getFixturePath('rightStylish.txt'), 'utf8');
-const rightAnswer2 = fs.readFileSync(getFixturePath('rightPlain.txt'), 'utf8');
-const rightAnswer3 = fs.readFileSync(getFixturePath('rightJson.txt'), 'utf8');
 
 describe.each([
   {
     a: data1,
     b: data2,
-    expected: rightAnswer1,
+    expected: 'rightStylish.txt',
     format: 'stylish',
   },
   {
     a: data1,
     b: data2,
-    expected: rightAnswer2,
+    expected: 'rightPlain.txt',
     format: 'plain',
   },
   {
     a: data1,
     b: data2,
-    expected: rightAnswer3,
+    expected: 'rightJson.txt',
     format: 'json',
+  },
+  {
+    a: data3,
+    b: data4,
+    expected: 'rightStylish.txt',
+  },
+  {
+    a: data3,
+    b: data4,
+    expected: 'rightStylish.txt',
+    format: 'stylish',
+  },
+  {
+    a: data3,
+    b: data4,
+    expected: 'rightPlain.txt',
+    format: 'plain',
+  },
+  {
+    a: data3,
+    b: data4,
+    expected: 'rightJson.txt',
+    format: 'json',
+  },
+  {
+    a: data3,
+    b: data4,
+    expected: 'rightStylish.txt',
   },
 ])('.add($a, $b)', ({
   a, b, expected, format,
 }) => {
-  test('mytest', () => {
-    expect(compareFiles(a, b, format)).toBe(expected);
+  test(`mytest ${expected}`, () => {
+    expect(compareFiles(a, b, format)).toBe(fs.readFileSync(getFixturePath(expected), 'utf8'));
   });
 });

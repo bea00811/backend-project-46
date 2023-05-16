@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
 
 const makeString = (value) => {
