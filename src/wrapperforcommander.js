@@ -1,7 +1,7 @@
 import formatter from './formatters/index.js';
-import parser from './parsers/parser.js';
-import getFileData from './parsers/getFileData.js';
-import getFileFormat from './parsers/getFileFormat.js';
+import parser from './parsers.js';
+import getFileData from './getFileData.js';
+import getFileFormat from './getFileFormat.js';
 import getRightTree from './comparefilesdeep.js';
 
 const getparsedData = (filepath) => {
