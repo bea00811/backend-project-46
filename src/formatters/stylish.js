@@ -33,9 +33,9 @@ const makeLine = (item, depth) => {
 const formatter = (tree) => {
   const iter = (currentTree, replacer = '', depth = 0) => {
     const {
-      key, oldvalue, type, newValue, children,
+      key, oldValue, type, newValue, children,
     } = currentTree;
-    const oldValueString = makeSpaceForValues(oldvalue, ' ', (depth + 1) * spaceForOneLevel);
+    const oldValueString = makeSpaceForValues(oldValue, ' ', (depth + 1) * spaceForOneLevel);
     const newValueString = makeSpaceForValues(newValue, ' ', (depth + 1) * spaceForOneLevel);
 
     if (type === 'root') {

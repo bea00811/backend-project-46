@@ -3,8 +3,8 @@ import * as path from 'path';
 
 const getFileData = (filepath) => {
   const fullPath = path.resolve(process.cwd(), filepath);
-  const filedata = fs.readFileSync(fullPath).toString();
-  return filedata;
+  const fileData = fs.readFileSync(fullPath).toString();
+  return fileData;
 };
 
 export default getFileData;

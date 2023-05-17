@@ -13,10 +13,10 @@ const makeString = (value) => {
 const plain = (tree) => {
   const iter = (node, result = '', path = '') => {
     const {
-      key, oldvalue, type, newValue, children,
+      key, oldValue, type, newValue, children,
     } = node;
     const nodeName = `${path}${key}`.slice(1);
-    const oldValueString = makeString(oldvalue);
+    const oldValueString = makeString(oldValue);
     const newValueString = makeString(newValue);
 
     if (type === 'root') {

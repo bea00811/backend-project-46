@@ -11,6 +11,7 @@
         {
           "key": "follow",
           "oldValue": false,
+          "newValue": false,
           "type": "added",
           "children": []
         },
@@ -24,6 +25,7 @@
         {
           "key": "setting2",
           "oldValue": 200,
+          "newValue": 200,
           "type": "removed",
           "children": []
         },
@@ -37,12 +39,16 @@
         {
           "key": "setting4",
           "oldValue": "blah blah",
+          "newValue": "blah blah",
           "type": "added",
           "children": []
         },
         {
           "key": "setting5",
           "oldValue": {
+            "key5": "value5"
+          },
+          "newValue": {
             "key5": "value5"
           },
           "type": "added",
@@ -79,6 +85,7 @@
             {
               "key": "ops",
               "oldValue": "vops",
+              "newValue": "vops",
               "type": "added",
               "children": []
             }
@@ -125,12 +132,26 @@
           "id": 45
         }
       },
+      "newValue": {
+        "abc": 12345,
+        "deep": {
+          "id": 45
+        }
+      },
       "type": "removed",
       "children": []
     },
     {
       "key": "group3",
       "oldValue": {
+        "deep": {
+          "id": {
+            "number": 45
+          }
+        },
+        "fee": 100500
+      },
+      "newValue": {
         "deep": {
           "id": {
             "number": 45

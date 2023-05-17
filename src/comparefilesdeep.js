@@ -1,12 +1,41 @@
 import _ from 'lodash';
 
-const makeNodes = (key, oldvalue, newValue, type, children) => ({
-  key,
-  oldvalue,
-  newValue,
-  type,
-  children,
-});
+const makeNodes = (key, type, children, oldValue, newValue) => {
+  if (type === 'nested') {
+    return {
+      key,
+      oldValue: null,
+      newValue: null,
+      type,
+      children,
+    };
+  }
+  if (type === 'added' || type === 'removed') {
+    return {
+      key,
+      oldValue,
+      type,
+      children,
+    };
+  }
+
+  if (type === 'unchanged') {
+    return {
+      key,
+      oldValue,
+      newValue: oldValue,
+      type,
+      children,
+    };
+  }
+  return {
+    key,
+    oldValue,
+    newValue,
+    type,
+    children,
+  };
+};
 
 const compareFilesDeep = (data1, data2) => {
   const arrayOfKeysBothFiles = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
@@ -15,22 +44,22 @@ const compareFilesDeep = (data1, data2) => {
     if (_.isPlainObject(_.get(data1, item)) && _.isPlainObject(_.get(data2, item))) {
       const valueData1 = _.get(data1, item);
       const valueData2 = _.get(data2, item);
-      return makeNodes(item, null, null, 'nested', compareFilesDeep(valueData1, valueData2));
+      return makeNodes(item, 'nested', compareFilesDeep(valueData1, valueData2));
     }
 
     if (_.get(data1, item) === _.get(data2, item)) {
-      return makeNodes(item, data1[item], data2[item], 'unchanged', []);
+      return makeNodes(item, 'unchanged', [], data1[item]);
     }
 
     if (_.has(data1, item) && _.has(data2, item) && _.get(data1, item) !== _.get(data2, item)) {
-      return makeNodes(item, data1[item], data2[item], 'changed', []);
+      return makeNodes(item, 'changed', [], data1[item], data2[item]);
     }
 
     if (!_.has(data2, item)) {
-      return makeNodes(item, data1[item], data2[item], 'removed', []);
+      return makeNodes(item, 'removed', [], data1[item]);
     }
 
-    return makeNodes(item, data2[item], data1[item], 'added', []);
+    return makeNodes(item, 'added', [], data2[item]);
   });
 
   return result;
