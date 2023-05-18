@@ -10,7 +10,6 @@ const makeNodes = (key, type, children, oldValue, newValue) => {
       children,
     };
   }
-
   return {
     key,
     oldValue,
@@ -21,7 +20,6 @@ const makeNodes = (key, type, children, oldValue, newValue) => {
 
 const compareFilesDeep = (data1, data2) => {
   const arrayOfKeysBothFiles = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
-  // const result = [];
   const result = arrayOfKeysBothFiles.map((item) => {
     if (_.isPlainObject(_.get(data1, item)) && _.isPlainObject(_.get(data2, item))) {
       const valueData1 = _.get(data1, item);

@@ -19,26 +19,21 @@ const plain = (tree) => {
     const oldValueString = makeString(oldValue);
     const newValueString = makeString(newValue);
 
-    if (type === 'root') {
-      return children.map((item) => iter(item, result, `${path}${key}.`)).join('\n');
-    }
-    if (type === 'nested') {
-      return children.flatMap((item) => iter(item, result, `${path}${key}.`)).join('\n');
-    }
+    switch (type) {
+      case 'root':
+        return children.map((item) => iter(item, result, `${path}${key}.`)).join('\n');
+      case 'nested':
+        return children.flatMap((item) => iter(item, result, `${path}${key}.`)).join('\n');
+      case 'changed':
+        return `${result}Property '${nodeName}' was updated. From ${oldValueString} to ${newValueString}`;
+      case 'added':
+        return `${result}Property '${nodeName}' was added with value: ${oldValueString}`;
+      case 'removed':
+        return `${result}Property '${nodeName}' was removed`;
 
-    if (type === 'changed') {
-      return `${result}Property '${nodeName}' was updated. From ${oldValueString} to ${newValueString}`;
+      default:
+        return [];
     }
-
-    if (type === 'added') {
-      return `${result}Property '${nodeName}' was added with value: ${oldValueString}`;
-    }
-
-    if (type === 'removed') {
-      return `${result}Property '${nodeName}' was removed`;
-    }
-
-    return [];
   };
 
   return iter(tree).trim();

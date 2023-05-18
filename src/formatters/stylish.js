@@ -38,40 +38,35 @@ const formatter = (tree) => {
     const oldValueString = makeSpaceForValues(oldValue, ' ', (depth + 1) * spaceForOneLevel);
     const newValueString = makeSpaceForValues(newValue, ' ', (depth + 1) * spaceForOneLevel);
 
-    if (type === 'root') {
-      return `{\n${replacer}${children
-        .map((item) => iter(item, makeLine(item, depth + 1), depth + 1))
-        .join('\n')}\n${' '.repeat(spaceForOneLevel * depth * spaceForOneLevel)}}`;
-    }
-    if (type === 'nested') {
-      return `${replacer}${children
-        .map((item) => iter(item, makeLine(item, depth + 1), depth + 1))
-        .join('\n')}\n${' '.repeat(spaceToLeft * depth * spaceToLeft)}}`;
-    }
+    switch (type) {
+      case 'root':
+        return `{\n${replacer}${children
+          .map((item) => iter(item, makeLine(item, depth + 1), depth + 1))
+          .join('\n')}\n${' '.repeat(spaceForOneLevel * depth * spaceForOneLevel)}}`;
+      case 'nested':
+        return `${replacer}${children
+          .map((item) => iter(item, makeLine(item, depth + 1), depth + 1))
+          .join('\n')}\n${' '.repeat(spaceToLeft * depth * spaceToLeft)}}`;
+      case 'changed':
+        return `${replacer}${' '.repeat(
+          spaceForOneLevel * (depth - 1) + spaceToLeft,
+        )}- ${key}: ${oldValueString}\n${' '.repeat(
+          spaceForOneLevel * (depth - 1) + spaceToLeft,
+        )}+ ${key}: ${newValueString}`;
+      case 'added':
+        return `${replacer}${' '.repeat(
+          spaceForOneLevel * (depth - 1) + spaceToLeft,
+        )}+ ${key}: ${oldValueString}`;
+      case 'removed':
+        return `${replacer}${' '.repeat(
+          spaceForOneLevel * (depth - 1) + spaceToLeft,
+        )}- ${key}: ${oldValueString}`;
 
-    if (type === 'changed') {
-      return `${replacer}${' '.repeat(
-        spaceForOneLevel * (depth - 1) + spaceToLeft,
-      )}- ${key}: ${oldValueString}\n${' '.repeat(
-        spaceForOneLevel * (depth - 1) + spaceToLeft,
-      )}+ ${key}: ${newValueString}`;
+      default:
+        return `${replacer}${' '.repeat(
+          spaceForOneLevel * (depth - 1) + spaceToLeft,
+        )}${' '} ${key}: ${oldValueString}`;
     }
-
-    if (type === 'added') {
-      return `${replacer}${' '.repeat(
-        spaceForOneLevel * (depth - 1) + spaceToLeft,
-      )}+ ${key}: ${oldValueString}`;
-    }
-
-    if (type === 'removed') {
-      return `${replacer}${' '.repeat(
-        spaceForOneLevel * (depth - 1) + spaceToLeft,
-      )}- ${key}: ${oldValueString}`;
-    }
-
-    return `${replacer}${' '.repeat(
-      spaceForOneLevel * (depth - 1) + spaceToLeft,
-    )}${' '} ${key}: ${oldValueString}`;
   };
 
   return iter(tree);
