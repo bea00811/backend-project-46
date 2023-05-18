@@ -1,37 +1,19 @@
 import _ from 'lodash';
 
 const makeNodes = (key, type, children, oldValue, newValue) => {
-  if (type === 'nested') {
-    return {
-      key,
-      oldValue: null,
-      newValue: null,
-      type,
-      children,
-    };
-  }
-  if (type === 'added' || type === 'removed') {
+  if (type === 'changed') {
     return {
       key,
       oldValue,
+      newValue,
       type,
       children,
     };
   }
 
-  if (type === 'unchanged') {
-    return {
-      key,
-      oldValue,
-      newValue: oldValue,
-      type,
-      children,
-    };
-  }
   return {
     key,
     oldValue,
-    newValue,
     type,
     children,
   };

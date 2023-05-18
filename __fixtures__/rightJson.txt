@@ -4,8 +4,6 @@
   "children": [
     {
       "key": "common",
-      "oldValue": null,
-      "newValue": null,
       "type": "nested",
       "children": [
         {
@@ -17,7 +15,6 @@
         {
           "key": "setting1",
           "oldValue": "Value 1",
-          "newValue": "Value 1",
           "type": "unchanged",
           "children": []
         },
@@ -50,14 +47,10 @@
         },
         {
           "key": "setting6",
-          "oldValue": null,
-          "newValue": null,
           "type": "nested",
           "children": [
             {
               "key": "doge",
-              "oldValue": null,
-              "newValue": null,
               "type": "nested",
               "children": [
                 {
@@ -72,7 +65,6 @@
             {
               "key": "key",
               "oldValue": "value",
-              "newValue": "value",
               "type": "unchanged",
               "children": []
             },
@@ -88,8 +80,6 @@
     },
     {
       "key": "group1",
-      "oldValue": null,
-      "newValue": null,
       "type": "nested",
       "children": [
         {
@@ -102,7 +92,6 @@
         {
           "key": "foo",
           "oldValue": "bar",
-          "newValue": "bar",
           "type": "unchanged",
           "children": []
         },
