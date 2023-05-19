@@ -2,13 +2,13 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/bea00811/backend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/bea00811/backend-project-46/actions)",
+  "description": "Проект 'Вычислитель отличий' – программа, определяющая разницу между двумя структурами данных",
   "main": "src/wrapperforcommander.js",
   "scripts": {
     "test": "jest"
   },
   "bin": {
-    "gendiff": "bin/gendiff.js"    
+    "gendiff": "bin/gendiff.js"
   },
   "author": "",
   "license": "ISC",

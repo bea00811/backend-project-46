@@ -1,22 +1,12 @@
 import _ from 'lodash';
 
-const makeNodes = (key, type, children, oldValue, newValue) => {
-  if (type === 'changed') {
-    return {
-      key,
-      oldValue,
-      newValue,
-      type,
-      children,
-    };
-  }
-  return {
-    key,
-    oldValue,
-    type,
-    children,
-  };
-};
+const makeNodes = (key, type, children, oldValue, newValue) => ({
+  key,
+  oldValue,
+  newValue,
+  type,
+  children,
+});
 
 const compareFilesDeep = (data1, data2) => {
   const arrayOfKeysBothFiles = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));

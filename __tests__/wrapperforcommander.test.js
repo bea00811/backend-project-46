@@ -17,7 +17,7 @@ const data4 = getFixturePath('file2.json');
 
 describe.each([
   [data1, data2, 'plain', 'rightPlain.txt'],
-  [data1, data2, 'json', 'rightJson.txt'],
+  [data1, data2, 'json', 'rightJson.json'],
   [data1, data2, undefined, 'rightStylish.txt'],
   [data3, data4, 'stylish', 'rightStylish.txt'],
 ])('test for compare different files', (filedata1, filedata2, format, expected) => {
