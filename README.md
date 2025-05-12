@@ -9,11 +9,8 @@
 - Поддержка разных входных форматов: yaml, json
 - Генерация отчета в виде plain text, stylish и json
 
-### Hexlet tests and linter status:
 
-[![Actions Status](https://github.com/bea00811/backend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/bea00811/backend-project-46/actions)
 
-[![Actions Status](https://github.com/bea00811/backend-project-46/workflows/test-check/badge.svg)](https://github.com/bea00811/backend-project-46/actions)
 
 <a href="https://codeclimate.com/github/bea00811/backend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/c52c72e0fc0292e7640e/maintainability" /></a>
 
